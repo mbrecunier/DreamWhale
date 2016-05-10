@@ -44,7 +44,8 @@
             android:hint="Name"
             android:textColorHint="@color/colorTextIcons"
             android:layout_marginTop="20dp"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/colorTextIcons" />
 
         <EditText
             android:id="@+id/emailEditText"
@@ -53,7 +54,8 @@
             android:inputType="textEmailAddress"
             android:hint="Email"
             android:textColorHint="@color/colorTextIcons"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/colorTextIcons" />
 
         <EditText
             android:id="@+id/passwordEditText"
@@ -63,7 +65,8 @@
             android:padding="10dp"
             android:hint="Password"
             android:textColorHint="@color/colorTextIcons"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/colorTextIcons" />
 
         <EditText
             android:id="@+id/confirmPasswordEditText"
@@ -73,7 +76,8 @@
             android:padding="10dp"
             android:hint="Confirm password"
             android:textColorHint="@color/colorTextIcons"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textColor="@color/colorTextIcons" />
 
         <Button
             android:id="@+id/createUserButton"
