@@ -6,33 +6,70 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.TextView;
 
 import com.epicodus.dreamwhale.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
-public class DatePickerFragment  extends DialogFragment
-        implements DatePickerDialog.OnDateSetListener {
+public class DatePickerFragment  extends Fragment {
+    private String title;
+    private int page;
+    @Bind(R.id.datePromptTextView) TextView mDatePromptTextView;
 
+    public DatePickerFragment(){}
 
+    public static DatePickerFragment newInstance(int page, String title) {
+        DatePickerFragment dateFragment = new DatePickerFragment();
+        Bundle args = new Bundle();
+        args.putInt("someInt", page);
+        args.putString("Date", title);
+        dateFragment.setArguments(args);
+
+        return dateFragment;
+    }
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState){
-// Use the current date as the default date in the picker
-    final Calendar c=Calendar.getInstance();
-            int year=c.get(Calendar.YEAR);
-            int month=c.get(Calendar.MONTH);
-            int day=c.get(Calendar.DAY_OF_MONTH);
-            return new DatePickerDialog(getActivity(),this,year,month,day);
-        }
+    public void onCreate(Bundle savedInstanceState) {
+        ButterKnife.bind(getActivity());
+        super.onCreate(savedInstanceState);
+        page = getArguments().getInt("someInt", 0);
+        title = getArguments().getString("Date");
+    }
 
-    public void onDateSet(DatePicker view, int year, int month, int day) {
-//        SAVE DATE AS PART OF DREAM OBJECT
-        }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_date_picker, container, false);
+
+        return view;
+    }
+
+    //onclick function
+        //if they clicked on calendar
+            //set date variable to date that user clicked
+
+//        Date date = new Date();
+//
+//        DateFormat fmt = new SimpleDateFormat("yyyy");
+//
+//        String dateString = fmt.format(date);
+////        String stringDate = date.toString();
+//        Log.d("The date is: ", dateString);
+
+
 
 }

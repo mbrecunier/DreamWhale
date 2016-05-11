@@ -9,67 +9,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.epicodus.dreamwhale.ui.AddDreamActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pick Date"
-        android:onClick="showDatePickerDialog"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/dateButton" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vpPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <com.larswerkman.holocolorpicker.ColorPicker
-        android:id="@+id/colorPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/dateButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+            <android.support.v4.view.PagerTabStrip
+                android:id="@+id/pager_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/descriptionEditText"
-        android:layout_below="@+id/colorPicker"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="cancel"
-        android:id="@+id/cancelButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:drawableLeft="@drawable/ic_cloud_off_white_24dp"
-        android:drawablePadding="3dp"
-        android:width="120dp"
-        android:textColor="@color/colorTextIcons"
-        android:background="#de5d5d"
-        android:padding="8dp"
-        android:textStyle="bold"
-        android:textSize="17sp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="save"
-        android:id="@+id/saveButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:drawableLeft="@drawable/ic_cloud_done_white_24dp"
-        android:drawablePadding="3dp"
-        android:width="120dp"
-        android:textColor="@color/colorTextIcons"
-        android:background="@color/colorPrimaryDark"
-        android:padding="8dp"
-        android:textStyle="bold"
-        android:textSize="17sp" />
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
 
 </RelativeLayout>
