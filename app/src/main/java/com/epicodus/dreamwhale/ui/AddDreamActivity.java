@@ -25,43 +25,24 @@ public class AddDreamActivity extends AppCompatActivity {
         adapterViewPager = new FormPagerAdapter(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
 
+//        COLLECT FROM DATEPICKER
+
+//        public void onDateSet(DatePicker view, int year, int month, int day) {
+//            Calendar calendar = Calendar.getInstance();
+//            calendar.set(year, month, day);
+//
+//            SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM");
+//            String output = formatter.format(calendar.getTime()); //eg: "Tue May"
+//        }
 
 
+//          COLLECT FROM COLOR PICKER
+
+
+//        COLLECT FROM DESCRIPTION
+
+//        CREATE DREAM OBJ (in an on event click listener?
     }
 }
 
 
-// TODO: ADD THESE BUTTONS BACK INTO LAYOUT WHERE APPROPRIATE
-//<Button
-//android:layout_width="wrap_content"
-//        android:layout_height="wrap_content"
-//        android:text="cancel"
-//        android:id="@+id/cancelButton"
-//        android:layout_alignParentBottom="true"
-//        android:layout_alignParentLeft="true"
-//        android:layout_alignParentStart="true"
-//        android:drawableLeft="@drawable/ic_cloud_off_white_24dp"
-//        android:drawablePadding="3dp"
-//        android:width="120dp"
-//        android:textColor="@color/colorTextIcons"
-//        android:background="#de5d5d"
-//        android:padding="8dp"
-//        android:textStyle="bold"
-//        android:textSize="17sp" />
-//
-//<Button
-//android:layout_width="wrap_content"
-//        android:layout_height="wrap_content"
-//        android:text="save"
-//        android:id="@+id/saveButton"
-//        android:layout_alignParentBottom="true"
-//        android:layout_alignParentRight="true"
-//        android:layout_alignParentEnd="true"
-//        android:drawableLeft="@drawable/ic_cloud_done_white_24dp"
-//        android:drawablePadding="3dp"
-//        android:width="120dp"
-//        android:textColor="@color/colorTextIcons"
-//        android:background="@color/colorPrimaryDark"
-//        android:padding="8dp"
-//        android:textStyle="bold"
-//        android:textSize="17sp" />
