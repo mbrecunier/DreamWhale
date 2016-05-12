@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.epicodus.dreamwhale.R;
@@ -13,10 +14,11 @@ import com.epicodus.dreamwhale.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class DreamDescriptionFragment extends Fragment {
+public class DreamDescriptionFragment extends Fragment implements View.OnClickListener {
     private int page;
     private String description;
     @Bind(R.id.descriptionTextView) TextView mDescriptionTextView;
+    @Bind(R.id.submitDreamButton) Button mSubmitDreamButton;
 
 
     public DreamDescriptionFragment() {
@@ -48,6 +50,14 @@ public class DreamDescriptionFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dream_description, container, false);
         // Inflate the layout for this fragment
         return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mSubmitDreamButton) {
+//            int colorPicked =
+        }
+
     }
 
 }

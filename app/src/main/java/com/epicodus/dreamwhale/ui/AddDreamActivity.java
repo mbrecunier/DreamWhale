@@ -8,15 +8,17 @@ import android.util.Log;
 
 import com.epicodus.dreamwhale.R;
 import com.epicodus.dreamwhale.adapters.FormPagerAdapter;
+import com.epicodus.dreamwhale.util.ColorPickerListener;
 import com.larswerkman.holocolorpicker.ColorPicker;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AddDreamActivity extends AppCompatActivity {
+public class AddDreamActivity extends AppCompatActivity implements ColorPickerListener {
     FragmentPagerAdapter adapterViewPager;
     private ColorPicker mColorPicker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

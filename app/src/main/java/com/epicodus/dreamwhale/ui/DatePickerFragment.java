@@ -25,7 +25,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class DatePickerFragment extends Fragment implements DatePicker.OnDateChangedListener {
+public class DatePickerFragment extends BaseFragment implements DatePicker.OnDateChangedListener {
     private String title;
     private int page;
     @Bind(R.id.datePromptTextView) TextView mDatePromptTextView;

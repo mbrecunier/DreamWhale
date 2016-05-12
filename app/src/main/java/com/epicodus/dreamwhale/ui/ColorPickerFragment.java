@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.epicodus.dreamwhale.R;
+import com.epicodus.dreamwhale.util.Constants;
 import com.larswerkman.holocolorpicker.ColorPicker;
 import com.larswerkman.holocolorpicker.SVBar;
 
@@ -17,7 +18,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class ColorPickerFragment extends Fragment {
+public class ColorPickerFragment extends BaseFragment {
     private int page;
     private String title;
     @Bind(R.id.pickColorTextView) TextView mPickColorTextView;
@@ -59,7 +60,8 @@ public class ColorPickerFragment extends Fragment {
         mColorPicker.setOnColorChangedListener(new ColorPicker.OnColorChangedListener() {
             @Override
             public void onColorChanged(int color) {
-                Log.d("color changed: ", Integer.toString(color));
+                mSharedPreferencesEditor.putString(Constants.COLOR, Integer.toString(color)).apply();
+                Log.d("Color :", mSharedPreferences.getString(Constants.COLOR, null));
             }
         });
 //        color1 = mColorPicker.getColor();
@@ -68,4 +70,31 @@ public class ColorPickerFragment extends Fragment {
         return view;
     }
 
+    public int getColorPickerColor() {
+        return mColorPicker.getColor();
+    }
+
+    @Override
+    public void onPause() {
+        //save color to shared preferences
+        super.onPause();
+        String endColor = Integer.toString(mColorPicker.getColor());
+        Log.d("onPause", endColor);
+    }
+
+    @Override
+    public void onDestroy() {
+        //save color to shared preferences
+        super.onDestroy();
+        String endColor = Integer.toString(mColorPicker.getColor());
+        Log.d("onDestroy", endColor);
+    }
+
+    @Override
+    public void onDetach() {
+        //save color to shared preferences
+        super.onDetach();
+        String endColor = Integer.toString(mColorPicker.getColor());
+        Log.d("onDetach", endColor);
+    }
 }
