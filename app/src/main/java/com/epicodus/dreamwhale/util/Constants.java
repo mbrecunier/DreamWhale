@@ -12,6 +12,7 @@ public class Constants {
     public static final String KEY_UID = "UID";
     public static final String FIREBASE_URL_USERS = FIREBASE_URL + "/" + FIREBASE_LOCATION_USERS;
 
+    public static final String DATE = "date";
     public static final String COLOR = "color";
     public static final String DESCRIPTION = "description";
 }

@@ -15,6 +15,7 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 
 import com.epicodus.dreamwhale.R;
+import com.epicodus.dreamwhale.util.Constants;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -25,7 +26,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class DatePickerFragment extends BaseFragment implements DatePicker.OnDateChangedListener {
+public class DatePickerFragment extends BaseFragment {
     private String title;
     private int page;
     @Bind(R.id.datePromptTextView) TextView mDatePromptTextView;
@@ -45,7 +46,6 @@ public class DatePickerFragment extends BaseFragment implements DatePicker.OnDat
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        ButterKnife.bind(getActivity());
         super.onCreate(savedInstanceState);
         page = getArguments().getInt("someInt", 0);
         title = getArguments().getString("Date");
@@ -74,28 +74,18 @@ public class DatePickerFragment extends BaseFragment implements DatePicker.OnDat
         View view = inflater.inflate(R.layout.fragment_date_picker, container, false);
         ButterKnife.bind(this, view);
 
+
+        mDatePicker.init(mDatePicker.getYear(), mDatePicker.getMonth(), mDatePicker.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
+            @Override
+            public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(i, i1, i2);
+                SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
+                String pickedDate = dateFormat.format(calendar.getTime());
+                mSharedPreferencesEditor.putString(Constants.DATE, pickedDate);
+            }
+        });
+
         return view;
     }
-
-    @Override
-    public void onDateChanged (DatePicker view, int year, int month, int day) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
-        String pickedDate = dateFormat.format(calendar.getTime());
-        Log.d("Date", pickedDate);
-
-    }
-
-
-//        Date date = new Date();
-//
-//        DateFormat fmt = new SimpleDateFormat("yyyy");
-//
-//        String dateString = fmt.format(date);
-////        String stringDate = date.toString();
-//        Log.d("The date is: ", dateString);
-
-
-
 }
