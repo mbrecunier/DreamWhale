@@ -14,14 +14,6 @@
         android:id="@+id/descriptionTextView"
         android:layout_gravity="center_horizontal|top" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_gravity="center" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +24,7 @@
         android:layout_alignParentEnd="true"
         android:drawableLeft="@drawable/ic_cloud_done_white_24dp"
         android:drawablePadding="3dp"
-        android:width="120dp"
+        android:width="135dp"
         android:textColor="@color/colorTextIcons"
         android:background="@color/colorPrimaryDark"
         android:padding="8dp"
@@ -50,12 +42,21 @@
         android:layout_alignParentStart="true"
         android:drawableLeft="@drawable/ic_cloud_off_white_24dp"
         android:drawablePadding="3dp"
-        android:width="120dp"
+        android:width="135dp"
         android:textColor="@color/colorTextIcons"
         android:background="#de5d5d"
         android:padding="8dp"
         android:textStyle="bold"
         android:textSize="17sp"
         android:layout_gravity="left|bottom" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="70dp"/>
 
 </FrameLayout>

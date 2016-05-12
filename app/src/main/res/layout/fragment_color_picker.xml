@@ -5,22 +5,22 @@
     tools:context="com.epicodus.dreamwhale.ui.ColorPickerFragment">
 
 
-    <com.larswerkman.holocolorpicker.ColorPicker
-        android:id="@+id/colorPicker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/dateButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="center_horizontal|bottom" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="pick a color for your dream"
+        android:text="What colors were in your dream?"
         android:id="@+id/pickColorTextView"
         android:layout_gravity="center_horizontal|top" />
+
+    <com.larswerkman.holocolorpicker.ColorPicker
+        android:id="@+id/colorPicker"
+        android:layout_width="match_parent"
+        android:layout_height="454dp"
+        android:layout_below="@+id/dateButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="center" />
 
 
 </FrameLayout>

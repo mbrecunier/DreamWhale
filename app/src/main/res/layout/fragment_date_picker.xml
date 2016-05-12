@@ -6,12 +6,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <DatePicker
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/datePicker"
-        android:layout_gravity="center_horizontal|bottom" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,4 +13,10 @@
         android:text="When was your dream?"
         android:id="@+id/datePromptTextView"
         android:layout_gravity="center_horizontal|top" />
+
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datePicker"
+        android:layout_gravity="center" />
 </FrameLayout>
