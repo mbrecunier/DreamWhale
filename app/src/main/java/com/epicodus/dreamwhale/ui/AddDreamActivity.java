@@ -16,6 +16,7 @@ import java.util.Date;
 
 public class AddDreamActivity extends AppCompatActivity {
     FragmentPagerAdapter adapterViewPager;
+    private ColorPicker mColorPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

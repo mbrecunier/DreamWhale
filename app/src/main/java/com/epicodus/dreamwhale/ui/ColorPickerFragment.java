@@ -3,23 +3,27 @@ package com.epicodus.dreamwhale.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.epicodus.dreamwhale.R;
+import com.larswerkman.holocolorpicker.ColorPicker;
+import com.larswerkman.holocolorpicker.SVBar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class ColorPickerFragment extends Fragment {
     private int page;
     private String title;
     @Bind(R.id.pickColorTextView) TextView mPickColorTextView;
+    @Bind(R.id.colorPicker) ColorPicker mColorPicker;
+    @Bind(R.id.svbar) SVBar mSVBar;
+    private int color1;
 
     public ColorPickerFragment() {
     }
@@ -35,7 +39,6 @@ public class ColorPickerFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        ButterKnife.bind(getActivity());
         super.onCreate(savedInstanceState);
         page = getArguments().getInt("someOtherInt", 3);
         title = getArguments().getString("Color");
@@ -46,10 +49,22 @@ public class ColorPickerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_color_picker, container, false);
+        ButterKnife.bind(this, view);
 
-//        ColorPicker picker = (ColorPicker) findViewById(R.id.picker);
-//        picker.getColor();
-        // Inflate the layout for this fragment
+        mColorPicker.addSVBar(mSVBar);
+        mColorPicker.setShowOldCenterColor(false);
+
+
+
+        mColorPicker.setOnColorChangedListener(new ColorPicker.OnColorChangedListener() {
+            @Override
+            public void onColorChanged(int color) {
+                Log.d("color changed: ", Integer.toString(color));
+            }
+        });
+//        color1 = mColorPicker.getColor();
+//        Log.d("initial color = ", Integer.toString(color1));
+
         return view;
     }
 

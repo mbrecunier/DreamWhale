@@ -25,10 +25,11 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class DatePickerFragment  extends Fragment {
+public class DatePickerFragment extends Fragment implements DatePicker.OnDateChangedListener {
     private String title;
     private int page;
     @Bind(R.id.datePromptTextView) TextView mDatePromptTextView;
+    @Bind(R.id.datePicker) DatePicker mDatePicker;
 
     public DatePickerFragment(){}
 
@@ -48,19 +49,44 @@ public class DatePickerFragment  extends Fragment {
         super.onCreate(savedInstanceState);
         page = getArguments().getInt("someInt", 0);
         title = getArguments().getString("Date");
+
+//      TODO Need to get data from DatePicker w/o incorporating dialog
+//        Date date = new Date();
+//
+//        date.g
+//        getDateInstance()
+//
+//        mDatePicker.init(mDatePicker.getYear(), mDatePicker.getMonth(), mDatePicker.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
+//            @Override
+//            public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
+//                Calendar calendar = Calendar.getInstance();
+//                calendar.set(i, i1, i2);
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
+//                String pickedDate = dateFormat.format(calendar.getTime());
+//                Log.d("Date", pickedDate);
+//            }
+//        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_date_picker, container, false);
+        ButterKnife.bind(this, view);
 
         return view;
     }
 
-    //onclick function
-        //if they clicked on calendar
-            //set date variable to date that user clicked
+    @Override
+    public void onDateChanged (DatePicker view, int year, int month, int day) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year, month, day);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
+        String pickedDate = dateFormat.format(calendar.getTime());
+        Log.d("Date", pickedDate);
+
+    }
+
 
 //        Date date = new Date();
 //

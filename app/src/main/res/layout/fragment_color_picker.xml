@@ -11,16 +11,24 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="What colors were in your dream?"
         android:id="@+id/pickColorTextView"
-        android:layout_gravity="center_horizontal|top" />
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="20dp" />
 
     <com.larswerkman.holocolorpicker.ColorPicker
         android:id="@+id/colorPicker"
         android:layout_width="match_parent"
-        android:layout_height="454dp"
+        android:layout_height="400dp"
         android:layout_below="@+id/dateButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_gravity="center" />
+
+    <com.larswerkman.holocolorpicker.SVBar
+        android:id="@+id/svbar"
+        android:layout_width="wrap_content"
+        android:layout_height="65dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="40dp" />
 
 
 </FrameLayout>
