@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.epicodus.dreamwhale.R;
 import com.epicodus.dreamwhale.models.Dream;
@@ -22,32 +23,19 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class DreamDescriptionFragment extends BaseFragment implements View.OnClickListener {
-    private int page;
-    private String description;
-    @Bind(R.id.descriptionTextView) TextView mDescriptionTextView;
     @Bind(R.id.submitDreamButton) Button mSubmitDreamButton;
     @Bind(R.id.cancelButton) Button mCancelButton;
     @Bind(R.id.descriptionEditText) EditText mDescriptionEditText;
 
 
-    public DreamDescriptionFragment() {
-        // Required empty public constructor
-    }
-
-    public static DreamDescriptionFragment newInstance(int page, String description) {
+    public static DreamDescriptionFragment newInstance() {
         DreamDescriptionFragment dreamDescriptionFragment = new DreamDescriptionFragment();
-        Bundle args = new Bundle();
-        args.putInt("someNewInt", page);
-        args.putString("someDescription", description);
-        dreamDescriptionFragment.setArguments(args);
         return dreamDescriptionFragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        page = getArguments().getInt("someNewInt", 2);
-        description = getArguments().getString("someDescription");
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
 
@@ -58,7 +46,6 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_dream_description, container, false);
-        // Inflate the layout for this fragment
         ButterKnife.bind(this, view);
         mSubmitDreamButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
@@ -70,27 +57,25 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
     public void onClick(View v) {
         if (v == mSubmitDreamButton) {
             String date = mSharedPreferences.getString(Constants.DATE, null);
-            Log.d("Saved date: ", date + "");
             String color = mSharedPreferences.getString(Constants.COLOR, null);
-            Log.d("Saved color: ", color + "");
             String description = mDescriptionEditText.getText().toString();
-            Log.d("Saved description ", description + "");
 
             Dream freshDream = new Dream(date, color, description);
-
-
             String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
             Firebase userDreamFirebaseRef = new Firebase(Constants.FIREBASE_DREAMS_URL).child(userUid);
             Firebase pushRef = userDreamFirebaseRef.push();
             String dreamPushId = pushRef.getKey();
             freshDream.setPushID(dreamPushId);
             pushRef.setValue(freshDream);
+
+            Toast.makeText(getActivity(), "dreamWhale saved", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(getActivity(), MainActivity.class);
+            startActivity(intent);
         }
         if (v == mCancelButton) {
             Intent intent = new Intent(getActivity(), MainActivity.class);
             startActivity(intent);
         }
-
     }
-
 }

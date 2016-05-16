@@ -31,11 +31,11 @@ public class FormPagerAdapter extends FragmentPagerAdapter {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0: // Fragment # 0 - This will show FirstFragment
-                    return DatePickerFragment.newInstance(0, "Date");
+                    return DatePickerFragment.newInstance();
                 case 1: // Fragment # 0 - This will show FirstFragment different title
-                    return ColorPickerFragment.newInstance(1, "Color");
+                    return ColorPickerFragment.newInstance();
                 case 2: // Fragment # 1 - This will show SecondFragment
-                    return DreamDescriptionFragment.newInstance(2, "Notes");
+                    return DreamDescriptionFragment.newInstance();
                 default:
                     return null;
             }
