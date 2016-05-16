@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
 
 
 public class ColorPickerFragment extends BaseFragment {
-    private String mPickedColor;
+    private int mPickedColor;
     @Bind(R.id.colorPicker) ColorPicker mColorPicker;
     @Bind(R.id.opacitybar) OpacityBar mOpacityBar;
     @Bind(R.id.saturationbar) SaturationBar mSaturationBar;
@@ -49,13 +49,8 @@ public class ColorPickerFragment extends BaseFragment {
         mColorPicker.setOnColorChangedListener(new ColorPicker.OnColorChangedListener() {
             @Override
             public void onColorChanged(int color) {
-                String alpha =  String.format("%02x", Color.alpha(color)),
-                        red = String.format("%02x", Color.red(color)),
-                        green = String.format("%02x", Color.green(color)),
-                        blue = String.format("%02x", Color.blue(color));
-
-                mPickedColor = "#" + alpha + red + green + blue;
-                mSharedPreferencesEditor.putString(Constants.COLOR, mPickedColor).apply();
+                mPickedColor = color;
+                mSharedPreferencesEditor.putString(Constants.COLOR, mPickedColor + "").apply();
             }
         });
         return view;

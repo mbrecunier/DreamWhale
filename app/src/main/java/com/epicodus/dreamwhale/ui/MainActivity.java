@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
         if (v == mViewJournalButton) {
-            Intent intent = new Intent(MainActivity.this, ViewDreamsActivity.class);
+            Intent intent = new Intent(MainActivity.this, SavedDreamsListActivity.class);
             startActivity(intent);
         }
     }

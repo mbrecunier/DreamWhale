@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.AddDreamActivity" />
-        <activity android:name=".ui.ViewDreamsActivity"></activity>
+        <activity android:name=".ui.ViewDreamsActivity" />
+        <activity android:name=".ui.SavedDreamsListActivity"></activity>
     </application>
 
 </manifest>
