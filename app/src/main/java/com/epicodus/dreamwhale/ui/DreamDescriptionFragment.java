@@ -3,6 +3,7 @@ package com.epicodus.dreamwhale.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.epicodus.dreamwhale.R;
 import com.epicodus.dreamwhale.models.Dream;
 import com.epicodus.dreamwhale.util.Constants;
+import com.firebase.client.Firebase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -46,6 +48,8 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
         super.onCreate(savedInstanceState);
         page = getArguments().getInt("someNewInt", 2);
         description = getArguments().getString("someDescription");
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
 
     }
 
@@ -71,7 +75,16 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
             Log.d("Saved color: ", color + "");
             String description = mDescriptionEditText.getText().toString();
             Log.d("Saved description ", description + "");
-//            Dream freshDream = new Dream(date, color, description);
+
+            Dream freshDream = new Dream(date, color, description);
+
+
+            String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
+            Firebase userDreamFirebaseRef = new Firebase(Constants.FIREBASE_DREAMS_URL).child(userUid);
+            Firebase pushRef = userDreamFirebaseRef.push();
+            String dreamPushId = pushRef.getKey();
+            freshDream.setPushID(dreamPushId);
+            pushRef.setValue(freshDream);
         }
         if (v == mCancelButton) {
             Intent intent = new Intent(getActivity(), MainActivity.class);

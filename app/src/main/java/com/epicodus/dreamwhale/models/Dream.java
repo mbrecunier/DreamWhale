@@ -4,6 +4,7 @@ public class Dream {
     private String date;
     private String color;
     private String description;
+    private String pushID;
 
     public Dream() {}
 
@@ -24,4 +25,13 @@ public class Dream {
     public String getDescription() {
         return description;
     }
+
+    public String getPushID() {
+        return pushID;
+    }
+
+    public void setPushID(String pushID) {
+        this.pushID = pushID;
+    }
+
 }
