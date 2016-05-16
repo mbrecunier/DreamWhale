@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.epicodus.dreamwhale.R;
 import com.epicodus.dreamwhale.models.Dream;
+import com.epicodus.dreamwhale.ui.DreamDetailActivity;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -34,10 +37,10 @@ public class DreamViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 int itemPosition = getLayoutPosition();
-//                Intent intent = new Intent(mContext, DreamDetailActivity.class);
-//                intent.putExtra("position", itemPosition + "");
-//                intent.putExtra("dreams", Parcels.wrap(mDreams));
-//                mContext.startActivity(intent);
+                Intent intent = new Intent(mContext, DreamDetailActivity.class);
+                intent.putExtra("position", itemPosition + "");
+                intent.putExtra("dreams", Parcels.wrap(mDreams));
+                mContext.startActivity(intent);
             }
         });
     }

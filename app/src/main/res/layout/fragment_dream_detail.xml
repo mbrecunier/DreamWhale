@@ -1,0 +1,26 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/dreamDetailFragment"
+    tools:context="com.epicodus.dreamwhale.ui.DreamDetailFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Tues 5/18"
+        android:id="@+id/dreamDateTextView"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:layout_width="309dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="The dream I had revolves around doors"
+        android:id="@+id/dreamDescriptionTextView"
+        android:layout_gravity="center"
+        android:textAlignment="center" />
+
+</FrameLayout>

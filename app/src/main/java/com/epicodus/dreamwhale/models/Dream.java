@@ -1,5 +1,8 @@
 package com.epicodus.dreamwhale.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Dream {
     private String date;
     private String color;
