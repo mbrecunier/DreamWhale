@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Bind(R.id.addDreamButton) Button mAddDreamButton;
     @Bind(R.id.viewJournalButton) Button mViewJournalButton;
+    @Bind(R.id.viewPublicJournalButton) Button mViewPublicJournalButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         mAddDreamButton.setOnClickListener(this);
         mViewJournalButton.setOnClickListener(this);
+        mViewPublicJournalButton.setOnClickListener(this);
 
     }
 
@@ -34,6 +36,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
         if (v == mViewJournalButton) {
             Intent intent = new Intent(MainActivity.this, SavedDreamsListActivity.class);
+            startActivity(intent);
+        }
+        if (v == mViewPublicJournalButton) {
+            Intent intent = new Intent(MainActivity.this, PublicDreamsListActivity.class);
             startActivity(intent);
         }
     }
