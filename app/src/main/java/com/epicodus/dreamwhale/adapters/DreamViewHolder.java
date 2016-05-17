@@ -27,6 +27,7 @@ public class DreamViewHolder extends RecyclerView.ViewHolder {
 
     private Context mContext;
     private ArrayList<Dream> mDreams = new ArrayList<>();
+    private int color;
 
     public DreamViewHolder(View itemView, ArrayList<Dream> dreams) {
         super(itemView);
@@ -46,17 +47,23 @@ public class DreamViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindDream(Dream dream) {
-        int color = Integer.parseInt(dream.getColor());
-        Log.d("Color", Color.alpha(color) + "");
-        int alpha =  Color.alpha(color),
-                red = Color.red(color),
-                green = Color.green(color),
-                blue = Color.blue(color);
-        if ((red*0.299 + green*0.587 + blue*0.114) > 186 ){
-            mDreamDateTextView.setTextColor((Color.BLACK));
-        } else {
-            mDreamDateTextView.setTextColor(Color.WHITE);
+
+        if(dream.getColor() != null) {
+            color = Integer.parseInt(dream.getColor());
+
         }
+        if (Color.red(color)+ "" != null && Color.green(color)+ "" != null && Color.blue(color)+ "" != null && Color.alpha(color)+ "" != null) {
+            int alpha =  Color.alpha(color),
+                    red = Color.red(color),
+                    green = Color.green(color),
+                    blue = Color.blue(color);
+            if ((red*0.299 + green*0.587 + blue*0.114) > 186 ){
+                mDreamDateTextView.setTextColor((Color.BLACK));
+            } else {
+                mDreamDateTextView.setTextColor(Color.WHITE);
+            }
+        }
+
 
         mDreamDateTextView.setText(dream.getDate());
         mDreamDateTextView.setBackgroundColor(color);

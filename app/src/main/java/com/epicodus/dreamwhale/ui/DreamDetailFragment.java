@@ -1,6 +1,7 @@
 package com.epicodus.dreamwhale.ui;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -54,7 +55,27 @@ public class DreamDetailFragment extends Fragment {
 
         mDreamDateTextView.setText(mDream.getDate());
         mDreamDescriptionTextView.setText(mDream.getDescription());
-        mDreamDetailLayout.setBackgroundColor(Integer.parseInt(mDream.getColor()));
+
+
+        if (mDream.getColor() != null) {
+            int color = Integer.parseInt(mDream.getColor());
+            mDreamDetailLayout.setBackgroundColor(color);
+
+            if (Color.red(color)+ "" != null && Color.green(color)+ "" != null && Color.blue(color)+ "" != null && Color.alpha(color)+ "" != null) {
+                int alpha =  Color.alpha(color),
+                        red = Color.red(color),
+                        green = Color.green(color),
+                        blue = Color.blue(color);
+                if ((red*0.299 + green*0.587 + blue*0.114) > 186 ){
+                    mDreamDateTextView.setTextColor((Color.BLACK));
+                    mDreamDescriptionTextView.setTextColor(Color.BLACK);
+                } else {
+                    mDreamDateTextView.setTextColor(Color.WHITE);
+                    mDreamDescriptionTextView.setTextColor(Color.WHITE);
+                }
+            }
+
+        }
         return view;
     }
 }
