@@ -15,6 +15,8 @@ import com.epicodus.dreamwhale.models.Dream;
 
 import org.parceler.Parcels;
 
+import java.text.SimpleDateFormat;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -53,7 +55,10 @@ public class DreamDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dream_detail, container, false);
         ButterKnife.bind(this, view);
 
-        mDreamDateTextView.setText(mDream.getDate());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
+        CharSequence humanDate = dateFormat.format(mDream.getDate());
+
+        mDreamDateTextView.setText(humanDate);
         mDreamDescriptionTextView.setText(mDream.getDescription());
 
 

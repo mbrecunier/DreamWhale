@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.epicodus.dreamwhale.R;
 import com.epicodus.dreamwhale.models.Dream;
+import com.epicodus.dreamwhale.models.User;
 import com.epicodus.dreamwhale.util.Constants;
 import com.firebase.client.Firebase;
 
@@ -70,16 +71,14 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
     @Override
     public void onClick(View v) {
         if (v == mSubmitDreamButton) {
-            String date = mSharedPreferences.getString(Constants.DATE, null);
+            Long date = mSharedPreferences.getLong(Constants.DATE, 0);
             String color = mSharedPreferences.getString(Constants.COLOR, null);
             String description = mDescriptionEditText.getText().toString();
 
             freshDream = new Dream(date, color, description, freshDream.getPublic());
-            String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
-            freshDream.setUserID(userUid);
             Firebase dreamFirebaseRef = new Firebase(Constants.FIREBASE_DREAMS_URL);
-
-            dreamFirebaseRef.push().setValue(freshDream);
+            String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
+            dreamFirebaseRef.child(userUid).push().setValue(freshDream);
 
             Toast.makeText(getActivity(), "dreamWhale saved", Toast.LENGTH_SHORT).show();
 

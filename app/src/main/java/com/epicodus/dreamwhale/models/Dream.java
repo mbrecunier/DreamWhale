@@ -2,26 +2,23 @@ package com.epicodus.dreamwhale.models;
 
 import org.parceler.Parcel;
 
+import java.text.SimpleDateFormat;
+
 @Parcel
 public class Dream {
-    private String date;
+    private Long date;
     private String color;
     private String description;
-    private String userID;
     private boolean isPublic;
 
     public Dream() {}
 
-    public Dream(String date, String color, String description, boolean isPublic) {
+    public Dream(Long date, String color, String description, boolean isPublic) {
         this.date = date;
         this.color = color;
         this.description = description;
         this.isPublic = isPublic;
 
-    }
-
-    public String getDate() {
-        return date;
     }
 
     public String getColor() {
@@ -32,14 +29,6 @@ public class Dream {
         return description;
     }
 
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
     public void setPublic(boolean isPublic) {
         this.isPublic = isPublic;
     }
@@ -47,5 +36,7 @@ public class Dream {
     public boolean getPublic() {
         return isPublic;
     }
+
+    public Long getDate() { return date; }
 
 }

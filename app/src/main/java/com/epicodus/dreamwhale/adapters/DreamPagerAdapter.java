@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.epicodus.dreamwhale.models.Dream;
 import com.epicodus.dreamwhale.ui.DreamDetailFragment;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -32,6 +33,9 @@ public class DreamPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mDreams.get(position).getDate();
+        Dream thisDream = mDreams.get(position);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
+        CharSequence humanDate = dateFormat.format(thisDream.getDate());
+        return humanDate;
     }
 }

@@ -47,8 +47,8 @@ public class SavedDreamsListActivity extends BaseActivity {
 
     private void setUpFirebaseQuery() {
         String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
-        String dream = mFirebaseDreamsRef.toString();
-        mQuery = new Firebase(dream).orderByChild("userID").equalTo(userUid);
+        String dream = mFirebaseDreamsRef.child(userUid).toString();
+        mQuery = new Firebase(dream).orderByChild("date");
         Log.d("DREAM: ", dream + "");
     }
 

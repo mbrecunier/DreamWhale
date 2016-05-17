@@ -14,6 +14,7 @@ import com.epicodus.dreamwhale.ui.DreamDetailActivity;
 
 import org.parceler.Parcels;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -64,8 +65,10 @@ public class DreamViewHolder extends RecyclerView.ViewHolder {
             }
         }
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
+        CharSequence humanDate = dateFormat.format(dream.getDate());
 
-        mDreamDateTextView.setText(dream.getDate());
+        mDreamDateTextView.setText(humanDate);
         mDreamDateTextView.setBackgroundColor(color);
     }
 }

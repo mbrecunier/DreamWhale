@@ -53,10 +53,9 @@ public class DatePickerFragment extends BaseFragment {
             public void onDateChanged(DatePicker datePicker, int i, int i1, int i2) {
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(i, i1, i2);
-                SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
-                String pickedDate = dateFormat.format(calendar.getTime());
-                mSharedPreferencesEditor.putString(Constants.DATE, pickedDate).apply();
-                Log.d("date?: ", pickedDate);
+                Long date = calendar.getTimeInMillis();
+                mSharedPreferencesEditor.putLong(Constants.DATE, date).apply();
+                Log.d("date?: ", date.toString());
             }
         });
         return view;
