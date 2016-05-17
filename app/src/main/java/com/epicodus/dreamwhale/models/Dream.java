@@ -8,13 +8,16 @@ public class Dream {
     private String color;
     private String description;
     private String pushID;
+    private boolean isPublic;
 
     public Dream() {}
 
-    public Dream(String date, String color, String description) {
+    public Dream(String date, String color, String description, boolean isPublic) {
         this.date = date;
         this.color = color;
         this.description = description;
+        this.isPublic = isPublic;
+
     }
 
     public String getDate() {
@@ -35,6 +38,14 @@ public class Dream {
 
     public void setPushID(String pushID) {
         this.pushID = pushID;
+    }
+
+    public void setPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+
+    public boolean getPublic() {
+        return isPublic;
     }
 
 }
