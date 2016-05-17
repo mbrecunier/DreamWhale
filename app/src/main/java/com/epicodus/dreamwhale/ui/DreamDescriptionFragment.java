@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,9 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
     @Bind(R.id.submitDreamButton) Button mSubmitDreamButton;
     @Bind(R.id.cancelButton) Button mCancelButton;
     @Bind(R.id.descriptionEditText) EditText mDescriptionEditText;
+    @Bind(R.id.privacyCheckBox) CheckBox mPrivacyCheckBox;
+
+    private Dream freshDream = new Dream();
 
 
     public static DreamDescriptionFragment newInstance() {
@@ -49,6 +54,15 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
         ButterKnife.bind(this, view);
         mSubmitDreamButton.setOnClickListener(this);
         mCancelButton.setOnClickListener(this);
+        mPrivacyCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    freshDream.setPublic(true);
+                } else {
+                    freshDream.setPublic(false);
+                }
+            }
+        });
 
         return view;
     }
@@ -60,7 +74,7 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
             String color = mSharedPreferences.getString(Constants.COLOR, null);
             String description = mDescriptionEditText.getText().toString();
 
-            Dream freshDream = new Dream(date, color, description);
+            freshDream = new Dream(date, color, description, freshDream.getPublic());
             String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
             Firebase userDreamFirebaseRef = new Firebase(Constants.FIREBASE_DREAMS_URL).child(userUid);
             Firebase pushRef = userDreamFirebaseRef.push();

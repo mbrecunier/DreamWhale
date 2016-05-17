@@ -51,14 +51,24 @@
         android:textSize="17sp"
         android:layout_gravity="left|bottom" />
 
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/descriptionEditText"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal|top"
         android:paddingTop="70dp"
-        android:layout_marginBottom="50dp" />
+        android:layout_marginTop="80dp" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share dream anonymously?"
+        android:id="@+id/privacyCheckBox"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="110dp"
+        android:textSize="18sp" />
 
 </FrameLayout>
