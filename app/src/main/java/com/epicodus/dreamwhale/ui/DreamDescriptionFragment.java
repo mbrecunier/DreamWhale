@@ -76,11 +76,10 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
 
             freshDream = new Dream(date, color, description, freshDream.getPublic());
             String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
-            Firebase userDreamFirebaseRef = new Firebase(Constants.FIREBASE_DREAMS_URL).child(userUid);
-            Firebase pushRef = userDreamFirebaseRef.push();
-            String dreamPushId = pushRef.getKey();
-            freshDream.setPushID(dreamPushId);
-            pushRef.setValue(freshDream);
+            freshDream.setUserID(userUid);
+            Firebase dreamFirebaseRef = new Firebase(Constants.FIREBASE_DREAMS_URL);
+
+            dreamFirebaseRef.push().setValue(freshDream);
 
             Toast.makeText(getActivity(), "dreamWhale saved", Toast.LENGTH_SHORT).show();
 

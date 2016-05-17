@@ -7,7 +7,7 @@ public class Dream {
     private String date;
     private String color;
     private String description;
-    private String pushID;
+    private String userID;
     private boolean isPublic;
 
     public Dream() {}
@@ -32,12 +32,12 @@ public class Dream {
         return description;
     }
 
-    public String getPushID() {
-        return pushID;
+    public String getUserID() {
+        return userID;
     }
 
-    public void setPushID(String pushID) {
-        this.pushID = pushID;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public void setPublic(boolean isPublic) {

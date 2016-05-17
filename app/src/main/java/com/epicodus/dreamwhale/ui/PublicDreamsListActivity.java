@@ -41,8 +41,8 @@ public class PublicDreamsListActivity extends AppCompatActivity {
     }
 
     private void setUpFirebaseQuery() {
-        String dream = mFirebaseDreamsRef.orderByChild("public").equalTo(true).toString();
-        mQuery = new Firebase(dream);
+        String dream = mFirebaseDreamsRef.toString();
+        mQuery = new Firebase(dream).orderByChild("public").equalTo(true);
     }
 
     private void setUpRecyclerView() {
