@@ -2,11 +2,25 @@
 
 ##### Dream Journal Android App, 5/10/2016
 
-#### By Michelle Brecunier and Charles Carter
+#### By Anna Becker, Michelle Brecunier, Charles Carter, Chris Young
 
 ## Description
 
-This Android application is a journal for users to track their dreams. Users can create a personalized journal and easily add entries with details about their dreams.
+This Android application is a journal for users to track their dreams with the option of sharing them with the DreamWhale community.
+
+##### Current Features
+* Account creation and authentication with your email address through Firebase
+* Easily navigate through app with menu bar
+* Add a date, color, and description to your dream entry
+* View your personal dream journal by date
+* Option to anonymously share your dream with the community
+* View the community dream journal to get an insight into other people's dreams
+
+##### Features in Progress
+* View whale word clouds containing popular words from your personal journal and the community journal
+* View dream color trends from your personal journal and the community journal
+* Easily share your dreams on social media
+* Available in the Google Play Store
 
 ## Setup/Installation Requirements
 You will need the following programs installed on your computer.
@@ -37,11 +51,11 @@ You will need the following programs installed on your computer.
 
 ## Technologies Used
 
-Java, Android Studio, Firebase
+Java, Android Studio, Gradle, Firebase, [ColorPicker](https://github.com/LarsWerkman/HoloColorPicker/) by [LarsWerkman](https://github.com/LarsWerkman)
 
 ### Legal
 
-Copyright (c) 2016 Michelle Brecunier, Charles Carter
+Copyright (c) 2016 Anna Becker, Michelle Brecunier, Charles Carter, Chris Young
 
 This software is licensed under the MIT license.
 
