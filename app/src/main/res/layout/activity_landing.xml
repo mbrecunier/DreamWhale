@@ -12,8 +12,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add a Dream"
-        android:id="@+id/addDreamButton"
+        android:text="LogIn To dream"
+        android:id="@+id/loginButton"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:width="200dp"
@@ -21,23 +21,7 @@
         android:padding="15dp"
         android:textColor="@color/colorTextIcons"
         android:background="@color/colorPrimaryDark"
-        android:drawableLeft="@drawable/ic_add_white_24dp"
-        android:drawablePadding="4dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Journal"
-        android:id="@+id/viewJournalButton"
-        android:layout_below="@+id/addDreamButton"
-        android:layout_centerHorizontal="true"
-        android:width="200dp"
-        android:textSize="17sp"
-        android:layout_marginTop="20dp"
-        android:padding="15dp"
-        android:textColor="@color/colorTextIcons"
-        android:background="@color/colorPrimaryDark"
-        android:drawableLeft="@drawable/ic_import_contacts_white_24dp"
+        android:drawableLeft="@drawable/ic_filter_drama_white_24dp"
         android:drawablePadding="4dp" />
 
     <Button
@@ -45,7 +29,7 @@
         android:layout_height="wrap_content"
         android:text="Community dreams"
         android:id="@+id/viewPublicJournalButton"
-        android:layout_below="@+id/viewJournalButton"
+        android:layout_below="@+id/loginButton"
         android:layout_centerHorizontal="true"
         android:width="200dp"
         android:textSize="17sp"
@@ -63,7 +47,7 @@
         android:contentDescription="picture of whale"
         android:src="@drawable/pinkwhale"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/addDreamButton"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/loginButton" />
 </RelativeLayout>

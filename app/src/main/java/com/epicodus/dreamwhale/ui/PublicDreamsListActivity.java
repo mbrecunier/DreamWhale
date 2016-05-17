@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.epicodus.dreamwhale.R;
 import com.epicodus.dreamwhale.adapters.FirebaseDreamListAdapter;
@@ -17,17 +16,14 @@ import com.firebase.client.Firebase;
 import com.firebase.client.Query;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class SavedDreamsListActivity extends BaseActivity {
+public class PublicDreamsListActivity extends AppCompatActivity {
     private Query mQuery;
     private Firebase mFirebaseDreamsRef;
     private FirebaseDreamListAdapter mAdapter;
-    private SharedPreferences mSharedPreferences;
     private ArrayList<Dream> dreams = new ArrayList<>();
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -39,18 +35,14 @@ public class SavedDreamsListActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         mFirebaseDreamsRef = new Firebase(Constants.FIREBASE_DREAMS_URL);
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         setUpFirebaseQuery();
         setUpRecyclerView();
     }
 
     private void setUpFirebaseQuery() {
-        String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
-        String dream = mFirebaseDreamsRef.child(userUid).toString();
+        String dream = mFirebaseDreamsRef.orderByChild("public").equalTo(true).toString();
         mQuery = new Firebase(dream);
-        Log.d("DREAM: ", dream + "");
-
     }
 
     private void setUpRecyclerView() {

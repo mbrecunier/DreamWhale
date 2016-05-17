@@ -15,10 +15,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class AddDreamActivity extends AppCompatActivity implements ColorPickerListener {
+public class AddDreamActivity extends BaseActivity implements ColorPickerListener {
     FragmentPagerAdapter adapterViewPager;
-    private ColorPicker mColorPicker;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,23 +26,6 @@ public class AddDreamActivity extends AppCompatActivity implements ColorPickerLi
         adapterViewPager = new FormPagerAdapter(getSupportFragmentManager());
         vpPager.setAdapter(adapterViewPager);
 
-//        COLLECT FROM DATEPICKER
-
-//        public void onDateSet(DatePicker view, int year, int month, int day) {
-//            Calendar calendar = Calendar.getInstance();
-//            calendar.set(year, month, day);
-//
-//            SimpleDateFormat formatter = new SimpleDateFormat("EEE MMM");
-//            String output = formatter.format(calendar.getTime()); //eg: "Tue May"
-//        }
-
-
-//          COLLECT FROM COLOR PICKER
-
-
-//        COLLECT FROM DESCRIPTION
-
-//        CREATE DREAM OBJ (in an on event click listener?
     }
 }
 

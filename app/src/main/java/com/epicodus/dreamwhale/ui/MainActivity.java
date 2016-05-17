@@ -11,7 +11,7 @@ import com.epicodus.dreamwhale.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Bind(R.id.addDreamButton) Button mAddDreamButton;
     @Bind(R.id.viewJournalButton) Button mViewJournalButton;
 

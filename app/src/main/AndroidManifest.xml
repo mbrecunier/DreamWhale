@@ -13,16 +13,19 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.CreateAccountActivity" />
-        <activity android:name=".ui.LoginActivity">
+        <activity android:name=".ui.LoginActivity" />
+        <activity android:name=".ui.AddDreamActivity" />
+        <activity android:name=".ui.DreamDetailActivity" />
+        <activity android:name=".ui.SavedDreamsListActivity" />
+        <activity android:name=".ui.LandingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.AddDreamActivity" />
-        <activity android:name=".ui.DreamDetailActivity" />
-        <activity android:name=".ui.SavedDreamsListActivity"></activity>
+        <activity android:name=".ui.PublicDreamsListActivity" />
+        <activity android:name=".ui.BaseActivity"></activity>
     </application>
 
 </manifest>
