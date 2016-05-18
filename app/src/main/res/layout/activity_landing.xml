@@ -3,14 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ui.MainActivity">
 
-    <Button
+    <ImageView
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="LogIn To dream"
         android:id="@+id/loginButton"
@@ -20,12 +26,13 @@
         android:textSize="17sp"
         android:padding="15dp"
         android:textColor="@color/colorTextIcons"
-        android:background="@color/colorPrimaryDark"
+        android:background="#90446CA0"
         android:drawableLeft="@drawable/ic_filter_drama_white_24dp"
-        android:drawablePadding="4dp" />
+        android:drawablePadding="4dp"
+        android:clickable="false" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Community dreams"
         android:id="@+id/viewPublicJournalButton"
@@ -36,7 +43,7 @@
         android:layout_marginTop="20dp"
         android:padding="15dp"
         android:textColor="@color/colorTextIcons"
-        android:background="@color/colorPrimaryDark"
+        android:background="#90673AB7"
         android:drawableLeft="@drawable/ic_people_white_24dp"
         android:drawablePadding="4dp" />
 
@@ -49,5 +56,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/loginButton" />
+        android:layout_above="@+id/loginButton"
+        android:scaleType="centerCrop"
+        android:cropToPadding="false" />
+
+
+
 </RelativeLayout>

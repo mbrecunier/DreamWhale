@@ -17,7 +17,9 @@
         <activity android:name=".ui.AddDreamActivity" />
         <activity android:name=".ui.DreamDetailActivity" />
         <activity android:name=".ui.SavedDreamsListActivity" />
-        <activity android:name=".ui.LandingActivity">
+        <activity
+            android:name=".ui.LandingActivity"
+            android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
