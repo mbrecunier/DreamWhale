@@ -6,46 +6,48 @@
     tools:context=".ui.MainActivity">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
         android:src="@drawable/background"
         android:scaleType="centerCrop"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="LogIn To dream"
+        android:text="LogIn To dream Whale"
         android:id="@+id/loginButton"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:width="200dp"
         android:textSize="17sp"
         android:padding="15dp"
         android:textColor="@color/colorTextIcons"
-        android:background="#90446CA0"
+        android:background="#9000BCD4"
         android:drawableLeft="@drawable/ic_filter_drama_white_24dp"
         android:drawablePadding="4dp"
-        android:clickable="false" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Community dreams"
         android:id="@+id/viewPublicJournalButton"
-        android:layout_below="@+id/loginButton"
-        android:layout_centerHorizontal="true"
         android:width="200dp"
         android:textSize="17sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:padding="15dp"
         android:textColor="@color/colorTextIcons"
         android:background="#90673AB7"
         android:drawableLeft="@drawable/ic_people_white_24dp"
-        android:drawablePadding="4dp" />
+        android:drawablePadding="4dp"
+        android:layout_below="@+id/loginButton"
+        android:layout_alignLeft="@+id/loginButton"
+        android:layout_alignStart="@+id/loginButton" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -56,9 +58,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/loginButton"
         android:scaleType="centerCrop"
-        android:cropToPadding="false" />
+        android:cropToPadding="false"
+        android:layout_above="@+id/loginButton"
+        android:layout_marginBottom="40dp" />
 
 
 

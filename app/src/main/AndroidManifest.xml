@@ -7,13 +7,17 @@
     <application
         android:name=".DreamWhaleApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/pinkwhale"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.CreateAccountActivity" />
-        <activity android:name=".ui.LoginActivity" />
+        <activity
+            android:name=".ui.CreateAccountActivity"
+            android:theme="@style/NoActionBarTheme"/>
+        <activity
+            android:name=".ui.LoginActivity"
+            android:theme="@style/NoActionBarTheme"/>
         <activity android:name=".ui.AddDreamActivity" />
         <activity android:name=".ui.DreamDetailActivity" />
         <activity android:name=".ui.SavedDreamsListActivity" />

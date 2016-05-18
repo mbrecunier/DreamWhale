@@ -7,10 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.MainActivity"
+    android:background="@drawable/background">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Add a Dream"
         android:id="@+id/addDreamButton"
@@ -20,12 +21,14 @@
         android:textSize="17sp"
         android:padding="15dp"
         android:textColor="@color/colorTextIcons"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimaryLight"
         android:drawableLeft="@drawable/ic_add_white_24dp"
-        android:drawablePadding="4dp" />
+        android:drawablePadding="4dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="View Journal"
         android:id="@+id/viewJournalButton"
@@ -36,12 +39,13 @@
         android:layout_marginTop="20dp"
         android:padding="15dp"
         android:textColor="@color/colorTextIcons"
-        android:background="@color/colorPrimaryDark"
+        android:background="#AEDBE0"
         android:drawableLeft="@drawable/ic_import_contacts_white_24dp"
-        android:drawablePadding="4dp" />
+        android:drawablePadding="4dp"
+        android:layout_marginBottom="20dp" />
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="Community dreams"
         android:id="@+id/viewPublicJournalButton"
@@ -52,9 +56,10 @@
         android:layout_marginTop="20dp"
         android:padding="15dp"
         android:textColor="@color/colorTextIcons"
-        android:background="@color/colorPrimaryDark"
         android:drawableLeft="@drawable/ic_people_white_24dp"
-        android:drawablePadding="4dp" />
+        android:drawablePadding="4dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorAccent" />
 
     <ImageView
         android:layout_width="match_parent"
