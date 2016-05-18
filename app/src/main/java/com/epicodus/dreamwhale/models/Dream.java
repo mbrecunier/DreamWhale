@@ -45,4 +45,16 @@ public class Dream {
     public void setPushId(String pushId) {
         this.pushId = pushId;
     }
+
+    public void setDate(Long date) {
+        this.date = date;
+    }
+
+    public Long getDateInverse() {
+        return dateInverse;
+    }
+
+    public void setDateInverse(Long dateInverse) {
+        this.dateInverse = dateInverse;
+    }
 }

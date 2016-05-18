@@ -26,7 +26,7 @@
         android:textSize="17sp"
         android:padding="15dp"
         android:textColor="@color/colorTextIcons"
-        android:background="#9000BCD4"
+        android:background="@color/colorPrimaryLight"
         android:drawableLeft="@drawable/ic_filter_drama_white_24dp"
         android:drawablePadding="4dp"
         android:layout_centerVertical="true"
@@ -42,7 +42,7 @@
         android:layout_marginTop="40dp"
         android:padding="15dp"
         android:textColor="@color/colorTextIcons"
-        android:background="#90673AB7"
+        android:background="#AEDBE0"
         android:drawableLeft="@drawable/ic_people_white_24dp"
         android:drawablePadding="4dp"
         android:layout_below="@+id/loginButton"
@@ -54,14 +54,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:contentDescription="picture of whale"
-        android:src="@drawable/pinkwhale"
+        android:src="@drawable/purplewhale"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         android:cropToPadding="false"
         android:layout_above="@+id/loginButton"
-        android:layout_marginBottom="40dp" />
+        android:layout_marginBottom="40dp"
+        android:layout_margin="10dp"
+        android:tint="#90B59BE5"/>
 
 
 
