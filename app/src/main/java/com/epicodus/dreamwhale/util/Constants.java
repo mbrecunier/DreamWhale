@@ -18,11 +18,4 @@ public class Constants {
 
     public static final String DATE = "date";
     public static final String COLOR = "color";
-    public static final String COLORALPHA = "alpha";
-    public static final String COLORRED = "red";
-    public static final String COLORGREEN = "green";
-    public static final String COLORBLUE = "blue";
-
-
-    public static final String DESCRIPTION = "description";
 }

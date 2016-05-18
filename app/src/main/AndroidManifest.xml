@@ -7,7 +7,7 @@
     <application
         android:name=".DreamWhaleApplication"
         android:allowBackup="true"
-        android:icon="@drawable/purplewhale"
+        android:icon="@drawable/iconwhale"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -30,7 +30,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.PublicDreamsListActivity" />
+        <activity android:name=".ui.PublicDreamsListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.dreamwhale.ui.LandingActivity"/>
+        </activity>
         <activity android:name=".ui.BaseActivity"></activity>
     </application>
 

@@ -64,12 +64,11 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:id="@+id/welcomeWhale"
         android:contentDescription="picture of whale"
-        android:src="@drawable/purplewhale"
+        android:src="@drawable/whitewhale"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/addDreamButton"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:tint="#90B59BE5" />
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
