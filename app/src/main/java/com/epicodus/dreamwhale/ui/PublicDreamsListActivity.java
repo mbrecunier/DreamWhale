@@ -34,7 +34,7 @@ public class PublicDreamsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_saved_dreams_list);
         ButterKnife.bind(this);
 
-        mFirebaseDreamsRef = new Firebase(Constants.FIREBASE_DREAMS_URL);
+        mFirebaseDreamsRef = new Firebase(Constants.FIREBASE_PUBLIC_DREAMS_URL);
 
         setUpFirebaseQuery();
         setUpRecyclerView();
@@ -42,7 +42,7 @@ public class PublicDreamsListActivity extends AppCompatActivity {
 
     private void setUpFirebaseQuery() {
         String dream = mFirebaseDreamsRef.toString();
-        mQuery = new Firebase(dream).orderByChild("public").equalTo(true);
+        mQuery = new Firebase(dream).orderByChild("dateInverse");
     }
 
     private void setUpRecyclerView() {

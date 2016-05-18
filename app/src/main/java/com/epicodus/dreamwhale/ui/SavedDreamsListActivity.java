@@ -38,7 +38,7 @@ public class SavedDreamsListActivity extends BaseActivity {
         setContentView(R.layout.activity_saved_dreams_list);
         ButterKnife.bind(this);
 
-        mFirebaseDreamsRef = new Firebase(Constants.FIREBASE_DREAMS_URL);
+        mFirebaseDreamsRef = new Firebase(Constants.FIREBASE_USER_DREAMS_URL);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         setUpFirebaseQuery();
@@ -48,7 +48,7 @@ public class SavedDreamsListActivity extends BaseActivity {
     private void setUpFirebaseQuery() {
         String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
         String dream = mFirebaseDreamsRef.child(userUid).toString();
-        mQuery = new Firebase(dream).orderByChild("date");
+        mQuery = new Firebase(dream).orderByChild("dateInverse");
         Log.d("DREAM: ", dream + "");
     }
 

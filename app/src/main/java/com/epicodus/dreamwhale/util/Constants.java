@@ -11,8 +11,10 @@ public class Constants {
     public static final String FIREBASE_PROPERTY_EMAIL = "email";
     public static final String KEY_UID = "UID";
     public static final String FIREBASE_URL_USERS = FIREBASE_URL + "/" + FIREBASE_LOCATION_USERS;
-    public static final String FIREBASE_DREAMS = "dreams";
-    public static final String FIREBASE_DREAMS_URL = FIREBASE_URL + "/" + FIREBASE_DREAMS;
+    public static final String FIREBASE_USER_DREAMS = "userDreams";
+    public static final String FIREBASE_PUBLIC_DREAMS = "publicDreams";
+    public static final String FIREBASE_USER_DREAMS_URL = FIREBASE_URL + "/" + FIREBASE_USER_DREAMS;
+    public static final String FIREBASE_PUBLIC_DREAMS_URL = FIREBASE_URL + "/" + FIREBASE_PUBLIC_DREAMS;
 
     public static final String DATE = "date";
     public static final String COLOR = "color";
