@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.epicodus.dreamwhale.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -32,7 +33,7 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_logout) {
-          //TODO: fix firebase logout();
+          logout();
             return true;
         }
         if (id == R.id.action_add_dream) {
@@ -50,11 +51,11 @@ public class BaseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //TODO: fix firebase auth
-//    protected void logout() {
-//        mFirebaseRef.unauth();
-//        takeUserToLoginScreenOnUnAuth();
-//    }
+
+    protected void logout() {
+        FirebaseAuth.getInstance().signOut();
+        takeUserToLoginScreenOnUnAuth();
+    }
 
     private void takeUserToLoginScreenOnUnAuth() {
         Intent intent = new Intent(this, LandingActivity.class);

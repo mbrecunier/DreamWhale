@@ -1,119 +1,138 @@
-//package com.epicodus.dreamwhale.ui;
-//
-//import android.app.ProgressDialog;
-//import android.content.Intent;
-//import android.content.SharedPreferences;
-//import android.preference.PreferenceManager;
-//import android.support.v7.app.AppCompatActivity;
-//import android.os.Bundle;
-//import android.util.Log;
-//import android.view.View;
-//import android.widget.Button;
-//import android.widget.EditText;
-//import android.widget.TextView;
-//import android.widget.Toast;
-//
-//import com.epicodus.dreamwhale.R;
-//import com.epicodus.dreamwhale.util.Constants;
-//import com.firebase.client.AuthData;
-//import com.firebase.client.Firebase;
-//import com.firebase.client.FirebaseError;
-//
-//import butterknife.Bind;
-//import butterknife.ButterKnife;
-//
-//public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-//    public static final String TAG = LoginActivity.class.getSimpleName();
-//    @Bind(R.id.passwordLoginButton) Button mPasswordLoginButton;
-//    @Bind(R.id.emailEditText) EditText mEmailEditText;
-//    @Bind(R.id.passwordEditText) EditText mPasswordEditText;
-//    @Bind(R.id.registerTextView) TextView mRegisterTextView;
-//    private Firebase mFirebaseRef;
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mSharedPreferencesEditor;
-//    private ProgressDialog mAuthProgressDialog;
-//
-//
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_login);
-//        ButterKnife.bind(this);
-//        mRegisterTextView.setOnClickListener(this);
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
-//        mSharedPreferencesEditor = mSharedPreferences.edit();
-//        mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
-//        mPasswordLoginButton.setOnClickListener(this);
-//        mAuthProgressDialog = new ProgressDialog(this);
-//        mAuthProgressDialog.setTitle("Loading DreamWhale...");
-//        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
-//        mAuthProgressDialog.setCancelable(false);
-//    }
-//
-//    @Override
-//    public void onClick(View view) {
-//        if (view == mPasswordLoginButton) {
-//            loginWithPassword();
-//        }
-//        if (view == mRegisterTextView) {
-//            Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
-//
-//    public void loginWithPassword() {
-//        String email = mEmailEditText.getText().toString();
-//        String password = mPasswordEditText.getText().toString();
-//
-//        if (email.equals("")) {
-//            mEmailEditText.setError("Please enter your email");
-//        }
-//        if (password.equals("")) {
-//            mPasswordEditText.setError("Password cannot be blank");
-//        }
-//
-//        mAuthProgressDialog.show();
-//
-//        mFirebaseRef.authWithPassword(email, password, new Firebase.AuthResultHandler() {
-//
-//            @Override
-//            public void onAuthenticated(AuthData authData) {
-//                mAuthProgressDialog.dismiss();
-//                if (authData != null) {
-//                    String userUid = authData.getUid();
-//                    mSharedPreferencesEditor.putString(Constants.KEY_UID, userUid).apply();
-//                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                    startActivity(intent);
-//                    finish();
-//                    String userInfo = authData.toString();
-//                    Log.d(TAG, "Currently logged in: " + userInfo);
-//                }
-//            }
-//
-//            @Override
-//            public void onAuthenticationError(FirebaseError firebaseError) {
-//                mAuthProgressDialog.dismiss();
-//                switch (firebaseError.getCode()) {
-//                    case FirebaseError.INVALID_EMAIL:
-//                    case FirebaseError.USER_DOES_NOT_EXIST:
-//                        mEmailEditText.setError("Please check that you entered your email correctly");
-//                        break;
-//                    case FirebaseError.INVALID_PASSWORD:
-//                        mEmailEditText.setError(firebaseError.getMessage());
-//                        break;
-//                    case FirebaseError.NETWORK_ERROR:
-//                        showErrorToast("There was a problem with the network connection");
-//                        break;
-//                    default:
-//                        showErrorToast(firebaseError.toString());
-//                }
-//            }
-//        });
-//    }
-//
-//    private void showErrorToast(String message) {
-//        Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
-//    }
-//}
+package com.epicodus.dreamwhale.ui;
+
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.epicodus.dreamwhale.R;
+import com.epicodus.dreamwhale.util.Constants;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final String TAG = LoginActivity.class.getSimpleName();
+    @Bind(R.id.passwordLoginButton) Button mPasswordLoginButton;
+    @Bind(R.id.emailEditText) EditText mEmailEditText;
+    @Bind(R.id.passwordEditText) EditText mPasswordEditText;
+    @Bind(R.id.registerTextView) TextView mRegisterTextView;
+
+    private DatabaseReference mFirebaseRef;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mSharedPreferencesEditor;
+    private ProgressDialog mAuthProgressDialog;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
+        mRegisterTextView.setOnClickListener(this);
+        mPasswordLoginButton.setOnClickListener(this);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+        mAuth = FirebaseAuth.getInstance();
+
+        mSharedPreferencesEditor = mSharedPreferences.edit();
+        mFirebaseRef = FirebaseDatabase.getInstance().getReference();
+        mAuthProgressDialog = new ProgressDialog(this);
+        mAuthProgressDialog.setTitle("Loading DreamWhale...");
+        mAuthProgressDialog.setMessage("Authenticating with Firebase...");
+        mAuthProgressDialog.setCancelable(false);
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+            }
+        };
+    }
+
+
+    @Override
+    public void onClick(View view) {
+        if (view == mPasswordLoginButton) {
+            loginWithPassword();
+        }
+        if (view == mRegisterTextView) {
+            Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+
+    public void loginWithPassword() {
+        String email = mEmailEditText.getText().toString();
+        String password = mPasswordEditText.getText().toString();
+
+        if (email.equals("")) {
+            mEmailEditText.setError("Please enter your email");
+        }
+        if (password.equals("")) {
+            mPasswordEditText.setError("Password cannot be blank");
+        }
+
+        mAuthProgressDialog.show();
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "signInWithEmail", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+
+}
+
+
