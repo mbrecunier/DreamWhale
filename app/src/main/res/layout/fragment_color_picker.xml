@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="What colors were in your dream?"
+        android:text="What color was your dream?"
         android:id="@+id/pickColorTextView"
         android:layout_gravity="center_horizontal|top"
         android:layout_marginTop="20dp" />

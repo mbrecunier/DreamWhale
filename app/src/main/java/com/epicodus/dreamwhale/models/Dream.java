@@ -6,12 +6,12 @@ import java.text.SimpleDateFormat;
 
 @Parcel
 public class Dream {
-    private Long date;
-    private Long dateInverse;
-    private String color;
-    private String description;
-    private boolean isPublic;
-    private String pushId;
+    public Long date;
+    public Long dateInverse;
+    public String color;
+    public String description;
+    public boolean isPublic;
+    public String pushId;
 
     public Dream() {}
 
@@ -21,7 +21,6 @@ public class Dream {
         this.description = description;
         this.isPublic = isPublic;
         this.dateInverse = date*-1;
-
     }
 
     public String getColor() {
@@ -44,17 +43,5 @@ public class Dream {
 
     public void setPushId(String pushId) {
         this.pushId = pushId;
-    }
-
-    public void setDate(Long date) {
-        this.date = date;
-    }
-
-    public Long getDateInverse() {
-        return dateInverse;
-    }
-
-    public void setDateInverse(Long dateInverse) {
-        this.dateInverse = dateInverse;
     }
 }

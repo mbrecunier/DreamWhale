@@ -25,16 +25,15 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         mLoginInButton.setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View v) {
-        if (v == mPublicJournalButton) {
-            Intent intent = new Intent(LandingActivity.this, PublicDreamsListActivity.class);
-            startActivity(intent);
-        }
-        if (v == mLoginInButton) {
-            Intent intent = new Intent(LandingActivity.this, LoginActivity.class);
-            startActivity(intent);
-        }
+//        if (v == mPublicJournalButton) {
+//            Intent intent = new Intent(LandingActivity.this, PublicDreamsListActivity.class);
+//            startActivity(intent);
+//        }
+//        if (v == mLoginInButton) {
+//            Intent intent = new Intent(LandingActivity.this, LoginActivity.class);
+//            startActivity(intent);
+//        }
     }
 }

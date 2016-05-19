@@ -26,13 +26,7 @@ public class DreamDetailFragment extends Fragment {
     @Bind(R.id.dreamDescriptionTextView) TextView mDreamDescriptionTextView;
     @Bind(R.id.dreamDetailFragment) FrameLayout mDreamDetailLayout;
 
-
     private Dream mDream;
-
-
-    public DreamDetailFragment() {
-        // Required empty public constructor
-    }
 
     public static DreamDetailFragment newInstance(Dream dream) {
         DreamDetailFragment dreamDetailFragment = new DreamDetailFragment();
@@ -47,7 +41,6 @@ public class DreamDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mDream = Parcels.unwrap(getArguments().getParcelable("dream"));
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,12 +58,11 @@ public class DreamDetailFragment extends Fragment {
         if (mDream.getColor() != null) {
             int color = Integer.parseInt(mDream.getColor());
             mDreamDetailLayout.setBackgroundColor(color);
+            int red = Color.red(color),
+                    green = Color.green(color),
+                    blue = Color.blue(color);
 
-            if (Color.red(color)+ "" != null && Color.green(color)+ "" != null && Color.blue(color)+ "" != null && Color.alpha(color)+ "" != null) {
-                int alpha =  Color.alpha(color),
-                        red = Color.red(color),
-                        green = Color.green(color),
-                        blue = Color.blue(color);
+            if (red + "" != null && green + "" != null && blue + "" != null) {
                 if ((red*0.299 + green*0.587 + blue*0.114) > 186 ){
                     mDreamDateTextView.setTextColor((Color.BLACK));
                     mDreamDescriptionTextView.setTextColor(Color.BLACK);
@@ -79,7 +71,6 @@ public class DreamDetailFragment extends Fragment {
                     mDreamDescriptionTextView.setTextColor(Color.WHITE);
                 }
             }
-
         }
         return view;
     }

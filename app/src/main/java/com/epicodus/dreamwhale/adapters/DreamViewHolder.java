@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,9 +19,6 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-/**
- * Created by Guest on 5/16/16.
- */
 public class DreamViewHolder extends RecyclerView.ViewHolder {
     @Bind(R.id.dreamDateTextView) TextView mDreamDateTextView;
 
@@ -48,7 +44,6 @@ public class DreamViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindDream(Dream dream) {
-
         if(dream.getColor() != null) {
             color = Integer.parseInt(dream.getColor());
 
@@ -64,7 +59,6 @@ public class DreamViewHolder extends RecyclerView.ViewHolder {
                 mDreamDateTextView.setTextColor(Color.WHITE);
             }
         }
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd yyyy");
         CharSequence humanDate = dateFormat.format(dream.getDate());
 

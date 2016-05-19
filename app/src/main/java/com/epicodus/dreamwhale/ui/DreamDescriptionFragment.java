@@ -4,8 +4,6 @@ package com.epicodus.dreamwhale.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +11,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.dreamwhale.R;
 import com.epicodus.dreamwhale.models.Dream;
-import com.epicodus.dreamwhale.models.User;
 import com.epicodus.dreamwhale.util.Constants;
-import com.firebase.client.Firebase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -33,7 +30,6 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
 
     private Dream freshDream = new Dream();
 
-
     public static DreamDescriptionFragment newInstance() {
         DreamDescriptionFragment dreamDescriptionFragment = new DreamDescriptionFragment();
         return dreamDescriptionFragment;
@@ -43,10 +39,7 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -77,15 +70,14 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
             freshDream = new Dream(date, color, description, freshDream.getPublic());
             String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
 
+            DatabaseReference userDreamRef = FirebaseDatabase.getInstance().getReference().child("userDream");
+            String pushId = userDreamRef.push().getKey();
 
-            Firebase userDreamRef = new Firebase(Constants.FIREBASE_USER_DREAMS_URL);
-            Firebase newDreamRef = userDreamRef.push();
-            String pushId = newDreamRef.getKey();
             freshDream.setPushId(pushId);
             userDreamRef.child(userUid).push().setValue(freshDream);
 
             if (freshDream.getPublic()) {
-                Firebase publicDreamRef = new Firebase(Constants.FIREBASE_PUBLIC_DREAMS_URL);
+                DatabaseReference publicDreamRef = FirebaseDatabase.getInstance().getReference().child("publicDreams");
                 publicDreamRef.child(pushId).setValue(freshDream);
             }
 

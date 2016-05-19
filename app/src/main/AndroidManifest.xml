@@ -5,30 +5,33 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".DreamWhaleApplication"
         android:allowBackup="true"
         android:icon="@drawable/iconwhale"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity" />
-        <activity
-            android:name=".ui.CreateAccountActivity"
-            android:theme="@style/NoActionBarTheme"/>
-        <activity
-            android:name=".ui.LoginActivity"
-            android:theme="@style/NoActionBarTheme"/>
-        <activity android:name=".ui.AddDreamActivity" />
+        <activity android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--<activity-->
+            <!--android:name=".ui.CreateAccountActivity"-->
+            <!--android:theme="@style/NoActionBarTheme"/>-->
+        <!--<activity-->
+            <!--android:name=".ui.LoginActivity"-->
+            <!--android:theme="@style/NoActionBarTheme"/>-->
+        <activity android:name=".ui.AddDreamActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.dreamwhale.ui.MainActivity"/>
+        </activity>
         <activity android:name=".ui.DreamDetailActivity" />
         <activity android:name=".ui.SavedDreamsListActivity" />
         <activity
             android:name=".ui.LandingActivity"
             android:theme="@style/NoActionBarTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.PublicDreamsListActivity">
             <meta-data

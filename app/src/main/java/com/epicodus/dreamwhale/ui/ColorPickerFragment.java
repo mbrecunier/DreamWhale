@@ -1,7 +1,5 @@
 package com.epicodus.dreamwhale.ui;
 
-
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,6 @@ import com.larswerkman.holocolorpicker.ValueBar;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
 
 public class ColorPickerFragment extends BaseFragment {
     private int mPickedColor;
@@ -34,7 +31,6 @@ public class ColorPickerFragment extends BaseFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
