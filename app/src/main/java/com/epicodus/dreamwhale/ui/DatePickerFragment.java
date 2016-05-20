@@ -1,7 +1,6 @@
 package com.epicodus.dreamwhale.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +42,6 @@ public class DatePickerFragment extends BaseFragment {
                 calendar.set(i, i1, i2);
                 Long date = calendar.getTimeInMillis();
                 mSharedPreferencesEditor.putLong(Constants.DATE, date).apply();
-                Log.d("date?: ", date.toString());
             }
         });
         return view;

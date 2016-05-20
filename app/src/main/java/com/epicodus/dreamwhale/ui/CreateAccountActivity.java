@@ -6,7 +6,6 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.epicodus.dreamwhale.R;
-import com.epicodus.dreamwhale.models.User;
 import com.epicodus.dreamwhale.util.Constants;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -62,10 +60,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     mSharedPreferencesEditor.putString(Constants.KEY_UID, user.getUid()).apply();
                     Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
                     startActivity(intent);
-
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
             }
         };
@@ -75,7 +69,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View view) {
         if (view == mCreateUserButton) {
-            Log.d(TAG, "Create User Button Clicked");
             createNewUser();
         }
         if (view == mLoginTextView) {
@@ -117,7 +110,6 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Toast.makeText(CreateAccountActivity.this, "Success.",
                                 Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
                         if (!task.isSuccessful()) {
                             Toast.makeText(CreateAccountActivity.this, "Authentication failed, try again.",
                                     Toast.LENGTH_SHORT).show();

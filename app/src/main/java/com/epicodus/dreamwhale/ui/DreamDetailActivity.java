@@ -20,8 +20,6 @@ public class DreamDetailActivity extends AppCompatActivity {
     private DreamPagerAdapter adapterViewPager;
     ArrayList<Dream> mDreams = new ArrayList<>();
 
-    //TODO: if logged in, show menu!
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
