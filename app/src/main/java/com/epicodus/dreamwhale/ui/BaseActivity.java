@@ -8,16 +8,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.epicodus.dreamwhale.R;
-import com.epicodus.dreamwhale.util.Constants;
-import com.firebase.client.Firebase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class BaseActivity extends AppCompatActivity {
-    private Firebase mFirebaseRef;
+    private DatabaseReference mFirebaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
+        mFirebaseRef = FirebaseDatabase.getInstance().getReference();
 
     }
 
@@ -32,7 +33,7 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_logout) {
-            logout();
+          logout();
             return true;
         }
         if (id == R.id.action_add_dream) {
@@ -50,8 +51,9 @@ public class BaseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     protected void logout() {
-        mFirebaseRef.unauth();
+        FirebaseAuth.getInstance().signOut();
         takeUserToLoginScreenOnUnAuth();
     }
 

@@ -20,7 +20,7 @@
     <Button
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="LogIn To dream Whale"
+        android:text="My DreamWhale"
         android:id="@+id/loginButton"
         android:width="200dp"
         android:textSize="17sp"

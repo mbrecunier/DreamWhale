@@ -25,7 +25,6 @@ public class LandingActivity extends AppCompatActivity implements View.OnClickLi
         mLoginInButton.setOnClickListener(this);
     }
 
-
     @Override
     public void onClick(View v) {
         if (v == mPublicJournalButton) {

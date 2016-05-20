@@ -1,30 +1,19 @@
 package com.epicodus.dreamwhale.ui;
 
-
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
-import android.widget.TextView;
 
 import com.epicodus.dreamwhale.R;
 import com.epicodus.dreamwhale.util.Constants;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-
 
 public class DatePickerFragment extends BaseFragment {
     @Bind(R.id.datePicker) DatePicker mDatePicker;
@@ -46,7 +35,6 @@ public class DatePickerFragment extends BaseFragment {
 
         View view = inflater.inflate(R.layout.fragment_date_picker, container, false);
         ButterKnife.bind(this, view);
-
 
         mDatePicker.init(mDatePicker.getYear(), mDatePicker.getMonth(), mDatePicker.getDayOfMonth(), new DatePicker.OnDateChangedListener() {
             @Override

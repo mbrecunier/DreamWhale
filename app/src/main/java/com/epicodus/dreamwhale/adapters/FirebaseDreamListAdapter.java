@@ -7,11 +7,8 @@ import android.view.ViewGroup;
 import com.epicodus.dreamwhale.R;
 import com.epicodus.dreamwhale.models.Dream;
 import com.epicodus.dreamwhale.util.FirebaseRecyclerAdapter;
-import com.firebase.client.Query;
+import com.google.firebase.database.Query;
 
-/**
- * Created by Guest on 5/16/16.
- */
 public class FirebaseDreamListAdapter extends FirebaseRecyclerAdapter<DreamViewHolder, Dream> {
 
     public FirebaseDreamListAdapter(Query query, Class<Dream> itemClass) {

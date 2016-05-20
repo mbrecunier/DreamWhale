@@ -8,9 +8,7 @@ import com.epicodus.dreamwhale.ui.ColorPickerFragment;
 import com.epicodus.dreamwhale.ui.DatePickerFragment;
 import com.epicodus.dreamwhale.ui.DreamDescriptionFragment;
 
-/**
- * Created by Guest on 5/11/16.
- */
+
 public class FormPagerAdapter extends FragmentPagerAdapter {
 
 

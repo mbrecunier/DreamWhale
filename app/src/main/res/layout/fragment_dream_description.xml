@@ -4,17 +4,6 @@
     android:layout_height="match_parent"
     tools:context="com.epicodus.dreamwhale.ui.DreamDescriptionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="What did you dream?"
-        android:id="@+id/descriptionTextView"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="20dp" />
-
     <Button
         android:layout_width="155dp"
         android:layout_height="wrap_content"
@@ -27,7 +16,7 @@
         android:drawablePadding="3dp"
         android:width="135dp"
         android:textColor="@color/colorTextIcons"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorPrimaryLight"
         android:padding="8dp"
         android:textStyle="bold"
         android:textSize="17sp"
@@ -45,30 +34,31 @@
         android:drawablePadding="3dp"
         android:width="135dp"
         android:textColor="@color/colorTextIcons"
-        android:background="#de5d5d"
+        android:background="@color/colorAccent"
         android:padding="8dp"
         android:textStyle="bold"
         android:textSize="17sp"
         android:layout_gravity="left|bottom" />
 
-
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="303dp"
         android:layout_height="wrap_content"
+        android:maxLines="10"
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/descriptionEditText"
         android:layout_gravity="center_horizontal|top"
-        android:paddingTop="70dp"
-        android:layout_marginTop="80dp" />
+        android:layout_marginTop="80dp"
+        android:hint="Enter dream notes..." />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Share dream anonymously?"
+        android:text="Share this with the DreamWhale community"
         android:id="@+id/privacyCheckBox"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="110dp"
-        android:textSize="18sp" />
+        android:textSize="17sp" />
+
 
 </FrameLayout>

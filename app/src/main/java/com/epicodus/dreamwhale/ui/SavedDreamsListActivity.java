@@ -13,8 +13,9 @@ import com.epicodus.dreamwhale.R;
 import com.epicodus.dreamwhale.adapters.FirebaseDreamListAdapter;
 import com.epicodus.dreamwhale.models.Dream;
 import com.epicodus.dreamwhale.util.Constants;
-import com.firebase.client.Firebase;
-import com.firebase.client.Query;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +26,7 @@ import butterknife.ButterKnife;
 
 public class SavedDreamsListActivity extends BaseActivity {
     private Query mQuery;
-    private Firebase mFirebaseDreamsRef;
+    private DatabaseReference mFirebaseDreamsRef;
     private FirebaseDreamListAdapter mAdapter;
     private SharedPreferences mSharedPreferences;
     private ArrayList<Dream> dreams = new ArrayList<>();
@@ -38,7 +39,7 @@ public class SavedDreamsListActivity extends BaseActivity {
         setContentView(R.layout.activity_saved_dreams_list);
         ButterKnife.bind(this);
 
-        mFirebaseDreamsRef = new Firebase(Constants.FIREBASE_USER_DREAMS_URL);
+        mFirebaseDreamsRef = FirebaseDatabase.getInstance().getReference().child("userDreams");
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
         setUpFirebaseQuery();
@@ -47,9 +48,7 @@ public class SavedDreamsListActivity extends BaseActivity {
 
     private void setUpFirebaseQuery() {
         String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
-        String dream = mFirebaseDreamsRef.child(userUid).toString();
-        mQuery = new Firebase(dream).orderByChild("dateInverse");
-        Log.d("DREAM: ", dream + "");
+        mQuery = mFirebaseDreamsRef.child(userUid).orderByChild("dateInverse");
     }
 
     private void setUpRecyclerView() {
