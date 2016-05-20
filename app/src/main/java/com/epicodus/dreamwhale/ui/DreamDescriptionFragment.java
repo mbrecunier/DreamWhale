@@ -68,9 +68,10 @@ public class DreamDescriptionFragment extends BaseFragment implements View.OnCli
             String color = mSharedPreferences.getString(Constants.COLOR, null);
             String description = mDescriptionEditText.getText().toString();
             freshDream = new Dream(date, color, description, freshDream.getPublic());
+
             String userUid = mSharedPreferences.getString(Constants.KEY_UID, null);
 
-            DatabaseReference userDreamRef = FirebaseDatabase.getInstance().getReference().child("userDream");
+            DatabaseReference userDreamRef = FirebaseDatabase.getInstance().getReference().child("userDreams");
             String pushId = userDreamRef.push().getKey();
 
             freshDream.setPushId(pushId);

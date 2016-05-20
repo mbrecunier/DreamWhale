@@ -35,7 +35,7 @@ public class PublicDreamsListActivity extends AppCompatActivity {
     }
 
     private void setUpFirebaseQuery() {
-        mQuery = mFirebaseDreamsRef.child("publicDreams").orderByChild("dateInverse");
+        mQuery = mFirebaseDreamsRef.orderByChild("dateInverse");
     }
 
     private void setUpRecyclerView() {

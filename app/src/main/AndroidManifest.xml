@@ -28,7 +28,11 @@
                 android:value="com.epicodus.dreamwhale.ui.MainActivity"/>
         </activity>
         <activity android:name=".ui.DreamDetailActivity" />
-        <activity android:name=".ui.SavedDreamsListActivity" />
+        <activity android:name=".ui.SavedDreamsListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.dreamwhale.ui.MainActivity"/>
+        </activity>
         <activity
             android:name=".ui.LandingActivity"
             android:theme="@style/NoActionBarTheme">
