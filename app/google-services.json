@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "662483702369",
+    "firebase_url": "https://dreamwhale-d8deb.firebaseio.com",
+    "project_id": "dreamwhale-d8deb",
+    "storage_bucket": "dreamwhale-d8deb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662483702369:android:5310c49e19ea0222",
+        "android_client_info": {
+          "package_name": "com.epicodus.dreamwhale"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662483702369-v9gc3qatce4r72p5vbhg292u8uio0k8g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlR0hK97uL2R3g22DSyps9Bx0IgQWJpu8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -31,10 +31,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
-    buildTypes.each {
-        it.buildConfigField 'String', 'FIREBASE_ROOT_URL', FirebaseRootUrl
-    }
 }
 
 apply plugin: 'com.neenbedankt.android-apt'
